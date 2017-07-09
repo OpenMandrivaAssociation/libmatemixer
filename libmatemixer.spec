@@ -36,8 +36,8 @@ available in the PulseAudio, ALSA and OSS sound systems.
 #---------------------------------------------------------------------------
 
 %package -n %{libname}
-Group:		System/Libraries
 Summary:	%{summary}
+Group:		System/Libraries
 Requires:	matemixer-backend
 
 %description -n %{libname}
@@ -52,12 +52,10 @@ This package contains libraries used by %{name}.
 #---------------------------------------------------------------------------
 
 %package -n matemixer-backend-pulse
-Group:		System/Libraries
 Summary:	PulseAudio backend for %{name}
+Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
 Provides:	matemixer-backend = %{version}-%{release}
-Obsoletes:	mate-settings-daemon-pulse
-Obsoletes:	mate-media-pulse
 
 %description -n matemixer-backend-pulse
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -82,12 +80,10 @@ matemixer-backend-oss packages.
 #---------------------------------------------------------------------------
 
 %package -n matemixer-backend-alsa
-Group:		System/Libraries
 Summary:	ALSA backend for %{name}
+Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
 Provides:	matemixer-backend = %{version}-%{release}
-Obsoletes:	mate-settings-daemon-gstreamer
-Obsoletes:	mate-media-gstreamer
 
 %description -n matemixer-backend-alsa
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -112,12 +108,10 @@ matemixer-backend-oss packages.
 #---------------------------------------------------------------------------
 
 %package -n matemixer-backend-oss
-Group:		System/Libraries
 Summary:	OSS backend for %{name}
+Group:		System/Libraries
 Requires:	%{libname} = %{version}-%{release}
 Provides:	matemixer-backend = %{version}-%{release}
-Obsoletes:	mate-settings-daemon-gstreamer
-Obsoletes:	mate-media-pulse-gstreamer
 
 %description -n matemixer-backend-oss
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
