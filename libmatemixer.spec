@@ -160,6 +160,7 @@ based on %{name}.
 #NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-oss \
+	--enable-gtk-doc \
 	%{nil}
 %make
 
