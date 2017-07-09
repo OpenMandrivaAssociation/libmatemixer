@@ -16,9 +16,13 @@ Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
 BuildRequires:	mate-common
-BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(alsa)
+BuildRequires:	pkgconfig(glib-2.0)
+BuildRequires:	pkgconfig(gobject-2.0)
+BuildRequires:	pkgconfig(gmodule-2.0)
+BuildRequires:	pkgconfig(gthread-2.0)
+BuildRequires:	pkgconfig(libpulse)
+BuildRequires:	pkgconfig(libpulse-mainloop-glib)
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
