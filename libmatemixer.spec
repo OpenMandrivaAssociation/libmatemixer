@@ -12,6 +12,7 @@ License:	GPLv2+ and LGPLv2+
 Group:		Sound
 Url:		https://www.mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
 BuildRequires:	mate-common
@@ -19,13 +20,20 @@ BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(alsa)
 
-
 %description
-libmatemixer is a mixer library for MATE desktop.
-It provides an abstract API allowing access to mixer functionality
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
+
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
+
+This package provides libmatemixer, a mixer library for MATE desktop.
+
+libmatemixer provides an abstract API allowing access to mixer functionality
 available in the PulseAudio, ALSA and OSS sound systems.
 
-Documentation for the API is provided with gtk-doc
+#---------------------------------------------------------------------------
 
 %package -n %{libname}
 Group:		System/Libraries
@@ -33,18 +41,15 @@ Summary:	%{summary}
 Requires:	matemixer-backend
 
 %description -n %{libname}
-libmatemixer is a mixer library for MATE desktop.
-It provides an abstract API allowing access to mixer functionality
-available in the PulseAudio, ALSA and OSS sound systems.
+This package contains libraries used by %{name}.
 
-%package -n %{develname}
-Group:		Development/C
-Summary:	Devel files for Mate Mixer Library
-Requires:	%{libname} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+%files -n %{libname} -f %{name}.lang
+%doc AUTHORS COPYING README
+%{_libdir}/%{name}.so.%{major}*
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/%{name}-null.so
 
-%description -n %{develname}
-Development files with mateweather libraries.
+#---------------------------------------------------------------------------
 
 %package -n matemixer-backend-pulse
 Group:		System/Libraries
@@ -55,13 +60,26 @@ Obsoletes:	mate-settings-daemon-pulse
 Obsoletes:	mate-media-pulse
 
 %description -n matemixer-backend-pulse
-libmatemixer is a mixer library for MATE desktop.
-It provides an abstract API allowing access to mixer functionality
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
+
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
+
+This package is part of libmatemixer, a mixer library for MATE desktop.
+
+libmatemixer provides an abstract API allowing access to mixer functionality
 available in the PulseAudio, ALSA and OSS sound systems.
 
-This package provides PulseAudio backend for libmatemixer.
-If you want to use ALSA or OSS backend install 
-matemixer-backend-alsa or matemixer-backend-oss packages.
+This package provides PulseAudio backend for libmatemixer. If you prefer to
+use ALSA or OSS backend install matemixer-backend-alsa or
+matemixer-backend-oss packages.
+
+%files -n matemixer-backend-pulse
+%{_libdir}/%{name}/%{name}-pulse.so
+
+#---------------------------------------------------------------------------
 
 %package -n matemixer-backend-alsa
 Group:		System/Libraries
@@ -72,13 +90,26 @@ Obsoletes:	mate-settings-daemon-gstreamer
 Obsoletes:	mate-media-gstreamer
 
 %description -n matemixer-backend-alsa
-libmatemixer is a mixer library for MATE desktop.
-It provides an abstract API allowing access to mixer functionality
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
+
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
+
+This package is part of libmatemixer, a mixer library for MATE desktop.
+
+libmatemixer provides an abstract API allowing access to mixer functionality
 available in the PulseAudio, ALSA and OSS sound systems.
 
-This package provides ALSA backend for libmatemixer.
-If you want to use PulseAudio or OSS backend install 
-matemixer-backend-pulse or matemixer-backend-oss packages.
+This package provides ALSA backend for libmatemixer. If you prefer to
+use PulseAudio or OSS backend install matemixer-backend-pulse or
+matemixer-backend-oss packages.
+
+%files -n matemixer-backend-alsa
+%{_libdir}/%{name}/%{name}-alsa.so
+
+#---------------------------------------------------------------------------
 
 %package -n matemixer-backend-oss
 Group:		System/Libraries
@@ -89,13 +120,44 @@ Obsoletes:	mate-settings-daemon-gstreamer
 Obsoletes:	mate-media-pulse-gstreamer
 
 %description -n matemixer-backend-oss
-libmatemixer is a mixer library for MATE desktop.
-It provides an abstract API allowing access to mixer functionality
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
+
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
+
+This package is part of libmatemixer, a mixer library for MATE desktop.
+
+libmatemixer provides an abstract API allowing access to mixer functionality
 available in the PulseAudio, ALSA and OSS sound systems.
 
-This package provides OSS backend for libmatemixer.
-If you want to use PulseAudio or ALSA backend install 
-matemixer-backend-pulse or matemixer-backend-alsa packages.
+This package provides OSS backend for libmatemixer. If you prefer to
+use PulseAudio or ALSA backend install matemixer-backend-pulse or
+matemixer-backend-alsa packages.
+
+%files -n matemixer-backend-oss
+%{_libdir}/%{name}/%{name}-oss.so
+
+#---------------------------------------------------------------------------
+
+%package -n %{develname}
+Group:		Development/C
+Summary:	Devel files for Mate Mixer Library
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+
+%description -n %{develname}
+This package contains libraries and includes files for developing programs
+based on %{name}.
+
+%files -n %{develname}
+%doc %{_datadir}/gtk-doc/html/%{name}
+%{_libdir}/libmatemixer.so
+%{_libdir}/pkgconfig/libmatemixer.pc
+%{_includedir}/mate-mixer/
+
+#---------------------------------------------------------------------------
 
 %prep
 %setup -q
@@ -112,25 +174,4 @@ matemixer-backend-pulse or matemixer-backend-alsa packages.
 
 # locales
 %find_lang %{name} --with-gnome --all-name
-
-%files -n %{libname} -f %{name}.lang
-%doc AUTHORS COPYING README
-%{_libdir}/%{name}.so.%{major}*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/%{name}-null.so
-
-%files -n matemixer-backend-pulse
-%{_libdir}/%{name}/%{name}-pulse.so
-
-%files -n matemixer-backend-alsa
-%{_libdir}/%{name}/%{name}-alsa.so
-
-%files -n matemixer-backend-oss
-%{_libdir}/%{name}/%{name}-oss.so
-
-%files -n %{develname}
-%doc %{_datadir}/gtk-doc/html/%{name}
-%{_libdir}/libmatemixer.so
-%{_libdir}/pkgconfig/libmatemixer.pc
-%{_includedir}/mate-mixer/
 
