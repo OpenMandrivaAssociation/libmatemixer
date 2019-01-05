@@ -6,7 +6,7 @@
 
 Summary:	A mixer library for MATE desktop
 Name:		libmatemixer
-Version:	1.20.0
+Version:	1.20.1
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Sound
@@ -166,10 +166,10 @@ based on %{name}.
 	--enable-oss \
 	--enable-gtk-doc \
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # locales
 %find_lang %{name} --with-gnome --all-name
