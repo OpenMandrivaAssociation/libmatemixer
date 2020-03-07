@@ -1,7 +1,2 @@
-removed_sources:
-  libmatemixer-1.14.0.tar.xz: c2537cce473225abacccd125e280cba5e61a3c93
-  libmatemixer-1.18.0.tar.xz: 28ed174a4fd079fa6fa927d4b28634a9b9779601
-  libmatemixer-1.20.0.tar.xz: 96021a3240264bdf0949658d88e07bcdc5d99fb1
-  libmatemixer-1.20.1.tar.xz: 87566d0fe5dcd534bfda25e92b0f2b23adb00c89
 sources:
-  libmatemixer-1.22.0.tar.xz: 5de47ba121492eba4ea3236a3e2f98b8c637ef63
+  libmatemixer-1.24.0.tar.xz: e972bc0101ad299a264abb810035de275b415962
