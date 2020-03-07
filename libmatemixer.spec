@@ -6,13 +6,14 @@
 
 Summary:	A mixer library for MATE desktop
 Name:		libmatemixer
-Version:	1.22.0
-Release:	2
+Version:	1.24.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Sound
 Url:		https://www.mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires: autoconf-archive
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(alsa)
