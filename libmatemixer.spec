@@ -6,7 +6,7 @@
 
 Summary:	A mixer library for MATE desktop
 Name:		libmatemixer
-Version:	1.24.1
+Version:	1.26.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Sound
