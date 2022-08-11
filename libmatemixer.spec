@@ -7,13 +7,13 @@
 Summary:	A mixer library for MATE desktop
 Name:		libmatemixer
 Version:	1.26.0
-Release:	2
+Release:	4
 License:	GPLv2+ and LGPLv2+
 Group:		Sound
 Url:		https://www.mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 
-BuildRequires: autoconf-archive
+BuildRequires:	autoconf-archive
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(alsa)
@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(gtk-doc)
 #BuildRequires:	pkgconfig(gtk-doc-mkpdf)
 BuildRequires:	pkgconfig(libpulse)
 BuildRequires:	pkgconfig(libpulse-mainloop-glib)
+BuildRequires:	pkgconfig(libudev)
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -45,6 +46,7 @@ available in the PulseAudio, ALSA and OSS sound systems.
 Summary:	%{summary}
 Group:		System/Libraries
 Requires:	matemixer-backend
+Recommends:	matemixer-backend-pulse
 
 %description -n %{libname}
 This package contains libraries used by %{name}.
@@ -166,6 +168,9 @@ based on %{name}.
 #NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--enable-oss \
+	--enable-pulseaudio \
+        --enable-alsa \
+        --enable-udev \
 	--enable-gtk-doc \
 	%{nil}
 %make_build
