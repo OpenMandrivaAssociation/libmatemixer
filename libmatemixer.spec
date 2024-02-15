@@ -1,17 +1,18 @@
-%define url_ver %(echo %{version}|cut -d. -f1,2)
+%define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define major		0
-%define libname		%mklibname matemixer %{major}
-%define develname	%mklibname -d matemixer
+%define libname		%mklibname matemixer
+%define develname	%mklibname matemixer -d
+%define oldlibname	%mklibname matemixer 0
 
 Summary:	A mixer library for MATE desktop
 Name:		libmatemixer
-Version:	1.26.1
+Version:	1.28.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Sound
 Url:		https://www.mate-desktop.org
-Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:	https://pub.mate-desktop.org/releases/%{mate_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	autoconf-archive
 BuildRequires:	intltool
@@ -47,6 +48,7 @@ Summary:	%{summary}
 Group:		System/Libraries
 Requires:	matemixer-backend
 Recommends:	matemixer-backend-pulse
+Obsoletes:	%{oldlibname} < %{EVRD}
 
 %description -n %{libname}
 This package contains libraries used by %{name}.
