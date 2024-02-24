@@ -2,7 +2,7 @@
 
 %define major		0
 %define libname		%mklibname matemixer
-%define develname	%mklibname matemixer -d
+%define devname		%mklibname matemixer -d
 %define oldlibname	%mklibname matemixer 0
 
 Summary:	A mixer library for MATE desktop
@@ -145,17 +145,17 @@ matemixer-backend-alsa packages.
 
 #---------------------------------------------------------------------------
 
-%package -n %{develname}
+%package -n %{devname}
 Group:		Development/C
 Summary:	Devel files for Mate Mixer Library
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 This package contains libraries and includes files for developing programs
 based on %{name}.
 
-%files -n %{develname}
+%files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/%{name}
 %{_libdir}/libmatemixer.so
 %{_libdir}/pkgconfig/libmatemixer.pc
@@ -171,8 +171,8 @@ based on %{name}.
 %configure \
 	--enable-oss \
 	--enable-pulseaudio \
-        --enable-alsa \
-        --enable-udev \
+	--enable-alsa \
+	--enable-udev \
 	--enable-gtk-doc \
 	%{nil}
 %make_build
